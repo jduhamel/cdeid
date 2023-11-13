@@ -1,17 +1,18 @@
-from collections import Counter
+import logging
 import re
+from collections import Counter
+
 import spacy
 import stanza
+from flair.data import Sentence as FlairSentence
 from flair.models import SequenceTagger as flair
-from flair.data import Sentence as FlairSentence, build_spacy_tokenizer
+from flair.tokenization import SpacyTokenizer as build_spacy_tokenizer
 
 from cdeid.data.data_loader import concatenate_sents
-from cdeid.utils.converter import to_bio2, entity_strip
 from cdeid.data.document import Document, Sentence, Token
-import logging
-
+from cdeid.utils.converter import entity_strip, to_bio2
+from cdeid.utils.resources import PACKAGE_NAME, SPACY_PRETRAINED_MODEL_LG
 from cdeid.utils.scorer import score_by_entity
-from cdeid.utils.resources import SPACY_PRETRAINED_MODEL_LG, PACKAGE_NAME
 
 logger = logging.getLogger(PACKAGE_NAME)
 nlp = spacy.load(SPACY_PRETRAINED_MODEL_LG)

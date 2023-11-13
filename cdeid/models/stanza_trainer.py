@@ -1,7 +1,9 @@
-from stanza.utils.prepare_ner_data import load_conll03
-from pathlib import Path
 import json
 import logging
+from pathlib import Path
+
+from stanza.utils.datasets.ner.prepare_ner_file import load_conll03
+
 import cdeid.models.stanza_trainer_agent as stanza_agent
 from cdeid.utils.resources import PACKAGE_NAME
 
